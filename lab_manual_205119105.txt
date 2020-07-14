@@ -1,0 +1,2010 @@
+
+--------------------------------------EXERCISE 1---------------------------------------------------------
+
+1.1>
+
+SQL> Create a table called EMP with the following structure.
+
+CREATE TABLE EMP(EMPNO NUMBER(6),ENAME VARCHAR(20) NOT NULL,JOB VARCHAR(10) NOT NULL,MGR NUMBER(4),DEPTNO NUMBER(3),SAL NUMBER(7,3));
+
+Table created.
+
+SQL> DESC EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ JOB                                       NOT NULL VARCHAR2(10)
+ MGR                                                NUMBER(4)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,3)
+
+1.2>
+
+SQL>.Add a column commission to the emp table
+
+Commission numeric null allowed.
+
+ ALTER TABLE EMP ADD (COMISSION NUMBER(20));
+
+Table altered.
+
+SQL> DESC EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ JOB                                       NOT NULL VARCHAR2(10)
+ MGR                                                NUMBER(4)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,3)
+ COMISSION                                          NUMBER(20)
+
+1.3>
+
+SQL>Modify the column width of the job field of emp table.
+
+ ALTER TABLE EMP MODIFY JOB NUMBER(20);
+
+Table altered.
+
+SQL> DESC EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ JOB                                       NOT NULL NUMBER(20)
+ MGR                                                NUMBER(4)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,3)
+ COMISSION                                          NUMBER(20)
+
+
+1.4>
+
+SQL> Create dept table with the following structure.
+CREATE TABLE DEPT( DEPTNO NUMBER(2) PRIMARY KEY , DNAME VARCHAR(10), LOC VARCHAR(10) );
+
+Table created.
+
+SQL> DESC DEPT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(2)
+ DNAME                                              VARCHAR2(10)
+ LOC                                                VARCHAR2(10)
+
+1.5>
+
+SQL>  Add constraints to the emp table that empno as the primary key and
+deptno as the foreign key.
+
+ALTER TABLE EMP ADD FOREIGN KEY(DEPTNO) REFERENCES DEPT(DEPTNO);
+
+Table altered.
+
+SQL> DESC EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ JOB                                       NOT NULL NUMBER(20)
+ MGR                                                NUMBER(4)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,3)
+ COMISSION                                          NUMBER(20)
+
+1.5> 
+
+SQL> Add constraints to the emp table that empno as the primary key and
+deptno as the foreign key.
+
+ ALTER TABLE EMP MODIFY (EMPNO NUMBER(6) PRIMARY KEY);
+
+Table altered.
+
+SQL> DESC EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(6)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ JOB                                       NOT NULL NUMBER(20)
+ MGR                                                NUMBER(4)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,3)
+ COMISSION                                          NUMBER(20)
+
+
+1.6>
+
+SQL> Add constraints to the emp table to check the empno value while
+entering (i.e) empno > 100.
+
+
+ALTER TABLE EMP ADD CHECK(EMPNO > 100);
+
+Table altered.
+
+1.7>
+
+SQL> Salary value by default is 5000, otherwise as entered values
+
+ ALTER TABLE EMP MODIFY SAL DEFAULT 5000;
+
+Table altered.
+
+1.8>
+
+SQL> Add columns Dob to the emp table.
+
+
+ ALTER TABLE EMP ADD (DOB  VARCHAR(10));
+
+Table altered.
+
+SQL> DESC EMP;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(6)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ JOB                                       NOT NULL NUMBER(20)
+ MGR                                                NUMBER(4)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,3)
+ COMISSION                                          NUMBER(20)
+ DOB                                                VARCHAR2(10)
+
+
+
+****************************************************EXCERCISE 2********************************************************
+
+
+
+SQL> ALTER TABLE DEPT MODIFY (DNAME VARCHAR(30));
+SQL> ALTER TABLE DEPT MODIFY (LOC VARCHAR(30));
+
+QUE:2> Insert 3 records into dept table.
+2.1> 
+
+SQL> INSERT INTO DEPT VALUES (10,'MANAGEMENT','MAIN BLOCK');
+
+1 row created.
+
+2.1>
+
+SQL> INSERT INTO DEPT VALUES (20,'DEVELOPMENT','MANUFACTURING UNIT');
+
+1 row created.
+
+2.1>
+
+SQL> INSERT INTO DEPT VALUES (30,'MAINTAINANCE','MAIN BLOCK');
+
+1 row created.
+
+2.2>
+
+SQL> insert into emp values(7369,'SMITH','clerk','7566',20,800,0,'17-dec-80);
+
+1 row created.
+
+2.2>
+
+SQL> insert into emp values(7399,'ASANT','SALSEMAN','7586',20,1000,300,'20-FEB-98');
+
+1 row created.
+
+2.2>
+
+SQL> insert into emp values(7399,'ASANT','SALSEMAN','7586',20,1000,300,'20-FEB-98');
+
+1 row created.
+
+2.2>
+
+SQL>insert into emp values(7499,'ALLEN','SALSEMAN','7644',30,1200,300,'20-FEB-98');
+
+1 row created.
+
+2.2>SQL>insert into emp values(7521,'WARD','SALSEMAN','7294',30,1500,500,'28-jan-98');
+
+1 row created.
+
+2.2>
+
+SQL>insert into emp values(7566,'JONES','MANAGER','6863',20,2500,500,'02-sep-98');
+
+1 row created.
+
+2.2>
+
+SQL>insert into emp values(7698,'BLAKE','MANAGER','9893',30,2500,1400,'31-aug-98');
+
+1 row created.
+
+2.2>
+
+SQL> insert into emp values(7611,'SCOTT','HOD','9633',10,1500,200,'28-feb-99');
+
+1 row created.
+
+2.2>
+
+SQL>insert into emp values(7839,'FORD','CEO','4433',10,2500,null,'28-mar-96');
+
+1 row created.
+
+2.2>
+
+SQL>insert into emp values(7368,'ALLEY','SUPERVIS','2489',30,500,null,'18-jul-97');
+
+1 row created.
+
+
+2.2>
+
+SQL>Insert 10 records into emp table.
+
+insert into emp values(7599,'DRANK','CLERK','8889',30,500,0,'16-jun-97');
+
+1 row created.
+
+SQL> SELECT *FROM EMP;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698         30
+      1600        300 20-FEB-81
+
+      7369 SMITH                CLERK                      7566         20
+       800          0 11-DEC-20
+
+      7521 WARD                 SALSEMAN                   7294         30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433         10
+      2500            28-MAR-96
+
+      7599 DRANK                CLERK                      8889         30
+       500          0 16-JUN-97
+
+      7368 ALLEY                SUPERVIS                   2489         30
+       500            18-JUL-97
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7611 SCOTT                HOD                        9633         10
+      1500        200 28-FEB-99
+
+      7698 BLAKE                MANAGER                    9893         30
+      2500       2000 31-AUG-98
+
+      7566 JONES                MANAGER                    6863         20
+      2500       2000 02-SEP-98
+
+
+9 rows selected.
+
+
+
+
+2.3>
+
+SQL> Update the emp table to set the default commission of all employees
+to Rs 1000/- who are working as managers.
+
+ UPDATE EMP
+  2  SET COMISSION =1000
+  3  WHERE JOB='MANAGER';
+
+2 rows updated.
+
+SQL> SELECT *FROM EMP;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698         30
+      1600        300 20-FEB-81
+
+      7369 SMITH                CLERK                      7566         20
+       800          0 11-DEC-20
+
+      7521 WARD                 SALSEMAN                   7294         30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433         10
+      2500            28-MAR-96
+
+      7599 DRANK                CLERK                      8889         30
+       500          0 16-JUN-97
+
+      7368 ALLEY                SUPERVIS                   2489         30
+       500            18-JUL-97
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7611 SCOTT                HOD                        9633         10
+      1500        200 28-FEB-99
+
+      7698 BLAKE                MANAGER                    9893         30
+      2500       2000 31-AUG-98
+
+      7566 JONES                MANAGER                    6863         20
+      2500       2000 02-SEP-98
+
+2.4>
+
+SQL> Create a pseudo table employee with the same structure as the table
+emp and insert rows into the table using select clauses.
+
+create table employee as select * from emp;
+
+SQL> SELECT *FROM EMPLOYEE;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698        30
+      1600        300 20-FEB-81
+
+      7369 SMITH                CLERK                      7566        20
+       800          0 11-DEC-20
+
+      7521 WARD                 SALSEMAN                   7294        30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433        10
+      2500            28-MAR-96
+
+      7599 DRANK                CLERK                      8889        30
+       500          0 16-JUN-97
+
+      7368 ALLEY                SUPERVIS                   2489        30
+       500            18-JUL-97
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7611 SCOTT                HOD                        9633        10
+      1500        200 28-FEB-99
+
+      7698 BLAKE                MANAGER                    9893        30
+      2500       2000 31-AUG-98
+
+      7566 JONES                MANAGER                    6863        20
+      2500       2000 02-SEP-98
+
+
+9 rows selected.
+
+
+
+2.5>
+
+SQL> Delete only those who are working as supervisors.
+
+ DELETE FROM EMPLOYEE WHERE JOB='SUPERVISER';
+
+1 row deleted.
+SQL> SELECT *FROM EMPLOYEE;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698        30
+      1600        300 20-FEB-81
+
+      7369 SMITH                CLERK                      7566        20
+       800          0 11-DEC-20
+
+      7521 WARD                 SALSEMAN                   7294        30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433        10
+      2500            28-MAR-96
+
+      7611 SCOTT                HOD                        9633        10
+      1500        200 28-FEB-99
+
+      7698 BLAKE                MANAGER                    9893        30
+      2500       2000 31-AUG-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7566 JONES                MANAGER                    6863        20
+      2500       2000 02-SEP-98
+
+
+7 rows selected.
+
+
+2.6>
+
+SQL> Delete the rows whose empno is 7599.
+
+ DELETE FROM EMP WHERE EMPNO=7599;
+
+1 row deleted.
+
+SQL> SELECT *FROM EMPLOYEE;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698        30
+      1600        300 20-FEB-81
+
+      7369 SMITH                CLERK                      7566        20
+       800          0 11-DEC-20
+
+      7521 WARD                 SALSEMAN                   7294        30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433        10
+      2500            28-MAR-96
+
+      7611 SCOTT                HOD                        9633        10
+      1500        200 28-FEB-99
+
+      7698 BLAKE                MANAGER                    9893        30
+      2500       2000 31-AUG-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7566 JONES                MANAGER                    6863        20
+      2500       2000 02-SEP-98
+
+
+7 rows selected.
+
+2.7>
+
+SQL>  List the records in the emp table orderby salary in ascending order.
+
+SELECT *FROM EMP ORDER BY SAL ASC;
+
+SQL> select * from employee order by sal;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7369 SMITH                CLERK                      7566        20
+       800          0 11-DEC-20
+
+      7611 SCOTT                HOD                        9633        10
+      1500        200 28-FEB-99
+
+      7521 WARD                 SALSEMAN                   7294        30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698        30
+      1600        300 20-FEB-81
+
+      7698 BLAKE                MANAGER                    9893        30
+      2500       2000 31-AUG-98
+
+      7566 JONES                MANAGER                    6863        20
+      2500       2000 02-SEP-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433        10
+      2500            28-MAR-96
+
+
+7 rows selected.
+
+
+2.8>
+
+SQL> List the records in the emp table orderby salary in descending order.
+
+select * from employee order by sal desc;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433                                        10
+      2500            28-MAR-96
+
+      7698 BLAKE                MANAGER                    9893                                        30
+      2500       2000 31-AUG-98
+
+      7566 JONES                MANAGER                    6863                                        20
+      2500       2000 02-SEP-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698                                        30
+      1600        300 20-FEB-81
+
+      7611 SCOTT                HOD                        9633                                        10
+      1500        200 28-FEB-99
+
+      7521 WARD                 SALSEMAN                   7294                                        30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7369 SMITH                CLERK                      7566                                        20
+       800          0 11-DEC-20
+
+
+7 rows selected.
+
+2.9>
+
+SQL> Display only those employees whose deptno is 30.
+
+
+ select * from employee where deptno=30;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698                                        30
+      1600        300 20-FEB-81
+
+      7521 WARD                 SALSEMAN                   7294                                        30
+      1500        500 28-JAN-98
+
+      7698 BLAKE                MANAGER                    9893                                        30
+      2500       2000 31-AUG-98
+
+2.10>
+
+SQL> Display deptno from the table employee avoiding the duplicated
+values.
+
+ select * from employee where deptno=30;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698                                        30
+      1600        300 20-FEB-81
+
+      7521 WARD                 SALSEMAN                   7294                                        30
+      1500        500 28-JAN-98
+
+      7698 BLAKE                MANAGER                    9893                                        30
+      2500       2000 31-AUG-98
+
+2.11>
+
+SQL> List the records in sorted order of their employees.
+
+select * from employee order by ename;
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698                                        30
+      1600        300 20-FEB-81
+
+      7698 BLAKE                MANAGER                    9893                                        30
+      2500       2000 31-AUG-98
+
+      7839 FORD                 CEO                        4433                                        10
+      2500            28-MAR-96
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7566 JONES                MANAGER                    6863                                        20
+      2500       2000 02-SEP-98
+
+      7611 SCOTT                HOD                        9633                                        10
+      1500        200 28-FEB-99
+
+      7369 SMITH                CLERK                      7566                                        20
+       800          0 11-DEC-20
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7521 WARD                 SALSEMAN                   7294                                        30
+      1500        500 28-JAN-98
+
+
+7 rows selected.
+
+
+2.12>
+
+SQL> create a manager table from the emp table which should hold
+details aonly about the managers.
+
+create table MANAGER as select * from emp where job='MANAGER';
+
+Table created.
+
+SQL> DESC MANAGER
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ENMPNO                                             NUMBER(6)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ JOB                                       NOT NULL VARCHAR2(20)
+ MGR                                                NUMBER(4)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,3)
+ COMISSION                                          NUMBER(8)
+ DOB                                                DATE
+
+SQL>
+
+
+2.13>
+
+SQL> List the employee names whose commission is null.
+
+SELECT *FROM EMP WHERE COMISSION=NULL;
+
+no rows selected
+
+
+2.14>
+
+SQL> select ename,dname from emp,dept where emp.deptno=dept.deptno;
+
+ENAME                DNAME
+-------------------- ------------------------------
+ALLEN                maintainence
+SMITH                development
+WARD                 maintainence
+FORD                 management
+SCOTT                management
+BLAKE                maintainence
+JONES                development
+
+7 rows selected.
+
+
+*********************************************<EXCERCISE 3>*******************************************************
+
+
+
+3.1>
+
+SQL> Select all employees from department numbers 7369,7499.
+
+ select * from employee where deptno in(10,30);
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698                                        30
+      1600        300 20-FEB-81
+
+      7521 WARD                 SALSEMAN                   7294                                        30
+      1500        500 28-JAN-98
+
+      7839 FORD                 CEO                        4433                                        10
+      2500            28-MAR-96
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7611 SCOTT                HOD                        9633                                        10
+      1500        200 28-FEB-99
+
+      7698 BLAKE                MANAGER                    9893                                        30
+      2500       2000 31-AUG-98
+
+
+3.2>
+
+SQL> Display all the details of the records whose employee name starts
+with ‘S’.
+
+select * from employee where ENAME like 's%';
+
+no rows selected
+
+3.3>
+
+SQL> Display all the details of the records whose employee name does not
+starts with ‘S’.
+ 
+select * from employee where ENAME NOT like 's%';
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7499 ALLEN                SALASMAN                   7698                                        30
+      1600        300 20-FEB-81
+
+      7369 SMITH                CLERK                      7566                                        20
+       800          0 11-DEC-20
+
+      7521 WARD                 SALSEMAN                   7294                                        30
+      1500        500 28-JAN-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7839 FORD                 CEO                        4433                                        10
+      2500            28-MAR-96
+
+      7611 SCOTT                HOD                        9633                                        10
+      1500        200 28-FEB-99
+
+      7698 BLAKE                MANAGER                    9893                                        30
+      2500       2000 31-AUG-98
+
+
+    ENMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7566 JONES                MANAGER                    6863                                        20
+      2500       2000 02-SEP-98
+
+
+7 rows selected.
+
+3.4>
+
+SQL> Display the rows whose empno ranges from 7500 to 7600.
+
+ select *from employee
+  2  where empno between 7500 and 7600;
+
+     EMPNO ENAME                JOB
+     MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7521 WARD                 SALSEMAN
+    7294        30
+      1500        500 28-JAN-98
+
+      7566 JONES                MANAGER
+    6863        20
+      2500       1000 02-SEP-98
+
+3.5>
+
+SQL> Display the rows whose empno not in range from 7500 to 7600.
+
+ select *from employee
+  2  where empno not between 7500 and 7600;
+
+     EMPNO ENAME                JOB
+     MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7369 SMITH                clerk
+    7566        20
+       800          0 17-DEC-80
+
+      7399 ASANT                SALSEMAN
+    7586        20
+      1000        300 20-FEB-98
+
+      7499 ALLEN                SALSEMAN
+    7644        30
+      1200        300 20-FEB-98
+
+
+     EMPNO ENAME                JOB
+     MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7698 BLAKE                MANAGER
+    9893        30
+      2500       1000 31-AUG-98
+
+      7611 SCOTT                HOD
+    9633        10
+      1500        200 28-FEB-99
+
+      7839 FORD                 CEO
+    4433        10
+      2500            28-MAR-96
+
+
+6 rows selected.
+
+3.6> Calculate the square root of the salary of all employees.
+
+SQL> select sqrt(sal) from  emp;
+
+ SQRT(SAL)
+----------
+28.2842712
+31.6227766
+34.6410162
+38.7298335
+        50
+        50
+38.7298335
+        50
+22.3606798
+22.3606798
+
+
+3.7>  Count the total records in the emp table.
+
+SQL> select count(*) as total_record from emp;
+
+TOTAL_RECORD
+------------
+          10
+
+3.8> Calculate the total and average salary amount of the emptable.
+
+SQL> select sum(sal),avg(sal) from emp;
+
+  SUM(SAL)   AVG(SAL)
+---------- ----------
+     14500       1450
+
+3.9> Calculate the total and average salary amount of the emptable.
+
+SQL> select min(sal) as min_sal, max(sal) as max_sal from emp;
+
+   MIN_SAL    MAX_SAL
+---------- ----------
+       500       2500
+
+3.10> Display total salary spent for employees.
+
+SQL> select sum(sal) from emp;
+
+  SUM(SAL)
+----------
+     14500
+
+
+3.11> Display total salary spent for each job category.
+
+Solution:
+SQL> SELECT JOB,SUM(SAL) FROM EMP GROUP BY JOB;
+
+JOB                    SUM(SAL)
+-------------------- ----------
+CLERK                       500
+clerk                       800
+SALSEMAN                   3700
+SUPERVIS                    500
+MANAGER                    5000
+HOD                        1500
+CEO                        2500
+
+3.12>
+
+SQL> Display the month name of date “14-jul-09” in full. 
+
+select to_char(to_date(’14-jul-09’),'month') from dual;
+
+TO_CHAR(T
+---------
+july
+
+3.13>SQL> Display the Dob of all employees in the format “dd-mm-yy”.
+
+select to_date(DOB,'DD-MM-YY') from EMP;
+
+TO_DATE(D
+---------
+17-DEC-80
+20-FEB-98
+20-FEB-98
+28-JAN-98
+02-SEP-98
+31-AUG-98
+28-FEB-99
+28-MAR-96
+18-JUL-97
+16-JUN-97
+
+10 rows selected.
+
+3.14>
+
+SQL> select add_months(DOB,2) from EMP;
+
+ADD_MONTH
+---------
+17-FEB-81
+20-APR-98
+20-APR-98
+28-MAR-98
+02-NOV-98
+31-OCT-98
+30-APR-99
+28-MAY-96
+18-SEP-97
+16-AUG-97
+
+
+3.15> Display the date two months after the Dob of employees.
+
+SQL>  select last_day(’05-oct-09’) from dual;
+
+LAST_DAY(
+---------
+31-OCT-09
+
+3.16>
+
+SQL> Display the rounded date in the year format, month format, day
+format in the employees.
+
+ select round(to_date(dob),’year’) from emp;
+
+ROUND(TO_
+---------
+01-JAN-81
+01-JAN-98
+01-JAN-98
+01-JAN-98
+01-JAN-99
+01-JAN-99
+01-JAN-99
+01-JAN-96
+01-JAN-98
+01-JAN-97
+
+3.17> Display the date 60 days before current date.
+
+SQL> select(sysdate-60) from dual;
+
+(SYSDATE-
+---------
+15-DEC-19
+
+
+3.18> List all employee names , salary and 15% rise in salary.
+
+SQL> select ENAME ,SAL , SAL+0.15* SAL from EMP;
+
+ENAME                       SAL SAL+0.15*SAL
+-------------------- ---------- ------------
+SMITH                       800          920
+ASANT                      1000         1150
+ALLEN                      1200         1380
+WARD                       1500         1725
+JONES                      2500         2875
+BLAKE                      2500         2875
+SCOTT                      1500         1725
+FORD                       2500         2875
+ALLEY                       500          575
+DRANK                       500          575
+
+10 rows selected.
+
+3.19>  List all employees which starts with either B or C.
+
+SQL> select ENAME from EMP where ENAME like 'B%' or ENAME like 'C%';
+
+ENAME
+--------------------
+BLAKE
+
+3.20> Display lowest paid employee details under each manager.
+
+SQL> select ENAME,SAL,MGR from EMP where SAL in (select min(SAL) from EMP group by MGR);
+
+ENAME                       SAL        MGR
+-------------------- ---------- ----------
+SMITH                       800       7566
+ASANT                      1000       7586
+ALLEN                      1200       7644
+WARD                       1500       7294
+JONES                      2500       6863
+BLAKE                      2500       9893
+SCOTT                      1500       9633
+FORD                       2500       4433
+ALLEY                       500       2489
+DRANK                       500       8889
+
+10 rows selected.
+
+
+3.22> Display the employee names whose name contains up to 5
+characters.
+
+SQL> select ename from emp where length (ename) <=5;
+
+ENAME
+--------------------
+SMITH
+ASANT
+ALLEN
+WARD
+JONES
+BLAKE
+SCOTT
+FORD
+ALLEY
+DRANK
+
+10 rows selected.
+
+3.23> List all employee names and their manager whose manager is
+77499 or 7566 0r 7611.
+
+SQL> select ename from emp where mgr in(7602,7566,7789);
+
+ENAME
+--------------------
+SMITH
+
+3.24> Find how many job titles are available in employee table.
+
+SQL> select count (distinct job) from emp;
+
+COUNT(DISTINCTJOB)
+------------------
+                 7
+
+3.25> What is the difference between maximum and minimum salaries
+of employees in the organization?
+
+SQL> select max(sal)-min(sal) from emp;
+
+MAX(SAL)-MIN(SAL)
+-----------------
+             2000
+
+3.26> Find no.of dept in employee table.
+
+
+SQL> select count(distinct deptno) from emp;
+
+COUNT(DISTINCTDEPTNO)
+---------------------
+                    3
+
+3.27> Display the names and dob of all employees who were born in Feburary.
+
+SQL> select ename , dob from emp where to_char (dob,'MON')='FEB';
+
+ENAME                DOB
+-------------------- ---------
+ASANT                20-FEB-98
+ALLEN                20-FEB-98
+SCOTT                28-FEB-99
+
+3.29> List out the employee names whose names starts with s and ends with h.
+
+SQL> select ENAME from EMP where ENAME LIKE ('S%') and ENAME LIKE('%H');
+
+ENAME
+--------------------
+SMITH
+
+3.30>
+
+SQL> List out the employee names whose salary is greater than 5000,6000
+
+ select ename from emp where sal>5000 or sal>6000;
+
+no rows selected
+
+
+
+*******************************************<EXCERCISE 4>**********************************************
+
+
+4.1>
+
+ SQL> select *from emp,dept
+  2  where emp.deptno=dept.deptno
+  3  and (dname='maintainance' or dname='development');
+
+     EMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB           DEPTNO DNAME
+---------- ---------- --------- ---------- ------------------------------
+LOC
+------------------------------
+      7369 SMITH                clerk                      7566         20
+       800          0 17-DEC-80         20 development
+manufacturing
+
+      7399 ASANT                SALSEMAN                   7586         20
+      1000        300 20-FEB-98         20 development
+manufacturing
+
+     EMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB           DEPTNO DNAME
+---------- ---------- --------- ---------- ------------------------------
+LOC
+------------------------------
+
+      7566 JONES                MANAGER                    6863         20
+      2500       1000 02-SEP-98         20 development
+manufacturing
+
+
+
+4.2>
+
+SQL> select ename,sal from emp
+  2  where sal>(select min(Sal) from emp)
+  3  and job like 'M%';
+
+ENAME                       SAL
+-------------------- ----------
+JONES                      2500
+BLAKE                      2500
+
+4.3>
+
+
+SQL> select *from emp where job=(select job from emp where ename='JONES') and ename not in ('JONES');
+
+     EMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7698 BLAKE                MANAGER                    9893         30
+      2500       1000 31-AUG-98
+
+ 4.4>
+
+SQL> select *from emp
+  2  where sal=(select max(sal) from emp where deptno=30);
+
+     EMPNO ENAME                JOB                         MGR     DEPTNO
+---------- -------------------- -------------------- ---------- ----------
+       SAL  COMISSION DOB
+---------- ---------- ---------
+      7566 JONES                MANAGER                    6863         20
+      2500       1000 02-SEP-98
+
+      7698 BLAKE                MANAGER                    9893         30
+      2500       1000 31-AUG-98
+
+      7839 FORD                 CEO                        4433         10
+      2500            28-MAR-96
+4.5>
+
+
+SQL> select ename from emp where job=(select job from emp where ename='JONES') and sal>=(select sal from emp where ename='FORD') and ename not in ('JONES');
+
+ENAME
+--------------------
+BLAKE
+
+4.6>
+
+SQL> select ename,job from emp where deptno=20 and job in(select job from dept,emp where dept.deptno=emp.deptno and dname = 'management');
+
+no rows selected
+
+4.7>
+
+SQL> select ename,deptno,sal from emp e1 where sal > (select avg(sal) from emp e2 where e1.deptno=e2.deptno);
+
+ENAME                    DEPTNO        SAL
+-------------------- ---------- ----------
+WARD                         30       1500
+JONES                        20       2500
+BLAKE                        30       2500
+FORD                         10       2500
+
+
+4.8>
+
+SQL> select ename,job,dname from emp,dept where emp.deptno=dept.deptno;
+
+ENAME                JOB                  DNAME
+-------------------- -------------------- ------------------------------
+SMITH                clerk                development
+ASANT                SALSEMAN             development
+ALLEN                SALSEMAN             maintainence
+WARD                 SALSEMAN             maintainence
+JONES                MANAGER              development
+BLAKE                MANAGER              maintainence
+SCOTT                HOD                  management
+FORD                 CEO                  management
+ALLEY                SUPERVIS             maintainence
+DRANK                CLERK                maintainence
+
+10 rows selected.
+
+4.9>
+
+SQL> select ename from emp where job in(select job from emp,dept where emp.deptno=dept.deptno and loc='MAIN BLOCK') and deptno not in (select deptno from dept where loc='MAIN BLOCK');
+
+no rows selected
+
+4.10>
+
+SQL> select ename from emp where deptno=10 and job in(select job from emp,dept where emp.deptno=dept.deptno and dname='DEVELOPMENT');
+
+no rows selected
+
+4.11>
+
+SQL> select ename from emp where job=(select job from emp where ename='FORD') and sal=(select sal from emp where ename='FORD') and ename not in ('FORD');
+
+no rows selected
+
+
+4.12>
+
+SQL> select dname from dept where (select count(*) from emp where job='SALESMAN' and dept.deptno=emp.deptno )  >= 2;
+
+no rows selected
+
+4.13>
+
+SQL> select ename from emp where deptno=20 and job in(select job from emp where deptno=30);
+
+ENAME
+--------------------
+ASANT
+JONES
+
+
+4.14>
+
+SQL> select ename from emp where sal>(select max(sal) from emp where deptno=20 or deptno=30);
+
+no rows selected
+
+4.15>
+
+SQL> select max(sal),dname from emp,dept where emp.deptno=dept.deptno and sal > 9000 group by dname;
+
+no rows selected
+
+4.16>
+
+SQL> select max(sal),dname from emp,dept where emp.deptno=dept.deptno having min(sal)>1000 and min(sal)<5000 group by dname;
+
+  MAX(SAL) DNAME
+---------- ------------------------------
+      2500 management
+
+4.17>
+
+
+SQL> create table accdept as select * from dept where deptno in (10,20,30);
+
+Table created.
+
+SQL> select dept.dname from dept,accdept where dept.deptno=accdept.deptno;
+
+DNAME
+------------------------------
+management
+development
+maintainence
+
+4.18>
+
+SQL> select ename from emp where deptno in (select deptno from dept where dname not in (select dept.dname from dept,accdept where dept.deptno=accdept.deptno));
+
+no rows selected
+
+4.19>
+
+SQL> select ename,dname from emp left join dept on emp.deptno=dept.deptno;
+
+ENAME                DNAME
+-------------------- ------------------------------
+FORD                 management
+SCOTT                management
+JONES                development
+ASANT                development
+SMITH                development
+DRANK                maintainence
+ALLEY                maintainence
+BLAKE                maintainence
+WARD                 maintainence
+ALLEN                maintainence
+
+10 rows selected.
+
+4.20>
+
+
+SQL> select ename,dname from emp right join dept on emp.deptno=dept.deptno;
+
+ENAME                DNAME
+-------------------- ------------------------------
+SMITH                development
+ASANT                development
+ALLEN                maintainence
+WARD                 maintainence
+JONES                development
+BLAKE                maintainence
+SCOTT                management
+FORD                 management
+ALLEY                maintainence
+DRANK                maintainence
+
+10 rows selected.
+
+4.21>
+
+
+SQL> select ename,dname from emp full outer join dept on emp.deptno=dept.deptno;
+
+ENAME                DNAME
+-------------------- ------------------------------
+SMITH                development
+ASANT                development
+ALLEN                maintainence
+WARD                 maintainence
+JONES                development
+BLAKE                maintainence
+SCOTT                management
+FORD                 management
+ALLEY                maintainence
+DRANK                maintainence
+
+10 rows selected.
+
+4.22>
+
+SQL> select a.ename as employee,b.ename as manager from emp a,emp b where a.mgr=b.empno;
+
+EMPLOYEE             MANAGER
+-------------------- --------------------
+SMITH                JONES
+
+
+4.23>
+
+SQL> select a.ename as employee,b.sal as manager_salary from emp a,emp b where a.mgr=b.empno;
+
+EMPLOYEE             MANAGER_SALARY
+-------------------- --------------
+SMITH                          2500
+
+4.24>
+
+SQL> select ename,job,empno,dname,loc from emp,dept where emp.deptno=dept.deptno;
+
+ENAME                JOB                       EMPNO
+-------------------- -------------------- ----------
+DNAME                          LOC
+------------------------------ ------------------------------
+SMITH                clerk                      7369
+development                    manufacturing
+
+ASANT                SALSEMAN                   7399
+development                    manufacturing
+
+ALLEN                SALSEMAN                   7499
+maintainence                   main block
+
+
+ENAME                JOB                       EMPNO
+-------------------- -------------------- ----------
+DNAME                          LOC
+------------------------------ ------------------------------
+WARD                 SALSEMAN                   7521
+maintainence                   main block
+
+JONES                MANAGER                    7566
+development                    manufacturing
+
+BLAKE                MANAGER                    7698
+maintainence                   main block
+
+
+ENAME                JOB                       EMPNO
+-------------------- -------------------- ----------
+DNAME                          LOC
+------------------------------ ------------------------------
+SCOTT                HOD                        7611
+management                     main block
+
+FORD                 CEO                        7839
+management                     main block
+
+ALLEY                SUPERVIS                   7368
+maintainence                   main block
+
+
+ENAME                JOB                       EMPNO
+-------------------- -------------------- ----------
+DNAME                          LOC
+------------------------------ ------------------------------
+DRANK                CLERK                      7599
+maintainence                   main block
+
+
+10 rows selected.
+
+4.25>
+
+
+SQL> select a.empno,a.ename as employee,a.job,b.ename as manager from emp a,emp b where a.mgr=b.empno;
+
+     EMPNO EMPLOYEE             JOB                  MANAGER
+---------- -------------------- -------------------- --------------------
+      7369 SMITH                clerk                JONES
+
+
+4.26>
+
+
+SQL> select ename from emp where sal in (select sal from emp group by sal having count(*)>1);
+
+ENAME
+--------------------
+FORD
+BLAKE
+JONES
+DRANK
+ALLEY
+SCOTT
+WARD
+
+7 rows selected.
+
+
+
+******************************************************<EXERCISE 5>**************************************************
+
+
+
+5.1>
+
+SQL> select deptno from dept union select deptno from accdept;
+
+5.2>
+
+SQL> select deptno from dept union all select deptno from accdept;
+
+5.3>
+
+SQL> select deptno from dept intersect select deptno from accdept;
+
+5.4>
+
+SQL> select deptno from dept minus select deptno from accdept;
+
+5.5>
+
+SQL> create view manager1 as select * from emp where job='manager';
+
+5.6>
+
+SQL> create view general as select empno, ename, emp.deptno from emp, dept where emp.deptno=dept.deptno;
+
+5.7>
+
+SQL> create view all1 as select empno, ename, emp.deptno, dname from emp, dept where emp.deptno=dept.deptno;
+
+5.8>
+
+SQL> select view_name from user_views;
+
+5.9>
+
+SQL> insert into manager values(7201, 'CLAVE', 20 ,'Computer');
+
+5.10>
+
+SQL> drop view all1;
+
+
+******************************************************<EXERCISE 6>**************************************************
+
+
+Program 6.1:write a pl/sql program to swap two numbers with out taking third variable
+
+declare
+a number(10);
+b number(10);
+begin
+a:=&a;
+b:=&b;
+dbms_output.put_line('THE PREV VALUES OF A AND B WERE');
+dbms_output.put_line(a);
+dbms_output.put_line(b);
+a:=a+b;
+b:=a-b;
+a:=a-b;
+dbms_output.put_line('THE VALUES OF A AND B ARE');
+dbms_output.put_line(a);
+dbms_output.put_line(b);
+
+end;
+
+OUTPUT:
+SQL> @ SWAPPING.SQL
+17 /
+Enter value for a: 5
+old 5: a:=&a;
+new 5: a:=5;
+Enter value for b: 3
+old 6: b:=&b;
+new 6: b:=3;
+THE PREV VALUES OF A AND B WERE
+5
+3
+THE VALUES OF A AND B ARE
+3
+5
+PL/SQL procedure successfully completed.
+
+
+Program 6.2:write a pl/sql program to swap two numbers by taking third variable
+
+
+declare
+a number(10);
+b number(10);
+c number(10);
+begin
+dbms_output.put_line('THE PREV VALUES OF A AND B WERE');
+dbms_output.put_line(a);
+dbms_output.put_line(b);
+a:=&a;
+b:=&b;
+c:=a;
+a:=b;
+b:=c;
+dbms_output.put_line('THE VALUES OF A AND B ARE');
+dbms_output.put_line(a);
+dbms_output.put_line(b);
+end;
+OUTPUT:
+SQL> @ SWAPPING2.SQL
+Enter value for a: 5
+old 6: a:=&a;
+new 6: a:=5;
+Enter value for b: 3
+old 7: b:=&b;
+new 7: b:=3;
+THE PREV VALUES OF A AND B WERE
+5
+3
+THE VALUES OF A AND B ARE
+3
+5
+PL/SQL procedure successfully completed.
+
+
+Program 6.3: Write a pl/sql program to find the largest of two numbers
+
+
+declare
+a number;
+b number;
+begin
+a:=&a;
+b:=&b;
+if a=b then
+dbms_output.put_line('BOTH ARE EQUAL');
+elsif a>b then
+dbms_output.put_line('A IS GREATER');
+else
+dbms_output.put_line('B IS GREATER');
+end if;
+end;
+
+
+OUTPUT:
+
+SQL> @ GREATESTOF2.sql
+13 /
+Enter value for a: 5
+old 5: a:=&a;
+new 5: a:=5;
+Enter value for b: 2
+old 6: b:=&b;
+new 6: b:=2;
+A IS GREATER
+
+PL/SQL procedure successfully completed.
+
+
+Program 6.4: Write a pl/sql program to find the total and average of 6 subjects and display
+the grade.
+
+
+declare
+java number(10);
+dbms number(10);
+co number(10);
+se number(10); es
+number(10); ppl
+number(10); total
+number(10); avgs
+number(10); per
+number(10);
+begin
+dbms_output.put_line('ENTER THE MARKS');
+java:=&java;
+dbms:=&dbms;
+co:=&co;
+se:=&se;
+es:=&es;
+ppl:=&ppl;
+total:=(java+dbms+co+se+es+ppl);
+per:=(total/600)*100;
+if java<40 or dbms<40 or co<40 or se<40 or es<40 or ppl<40 then
+dbms_output.put_line('FAIL');
+if per>75 then
+dbms_output.put_line('GRADE A');
+elsif per>65 and per<75 then
+dbms_output.put_line('GRADE B');
+elsif per>55 and per<65 then
+dbms_output.put_line('GRADE C');
+else
+dbms_output.put_line('INVALID INPUT');
+end if;
+dbms_output.put_line('PERCENTAGE IS '||per);
+dbms_output.put_line('TOTAL IS '||total);
+end;
+
+OUTPUT:
+
+SQL> @ GRADE.sql
+31 /
+Enter value for java: 80
+old 12: java:=&java;
+new 12: java:=80;
+Enter value for dbms: 70
+old 13: dbms:=&dbms;
+new 13: dbms:=70;
+Enter value for co: 89
+old 14: co:=&co;
+new 14: co:=89;
+Enter value for se: 72
+old 15: se:=&se;
+new 15: se:=72;
+Enter value for es: 76
+old 16: es:=&es;
+new 16: es:=76;
+Enter value for ppl: 71
+old 17: ppl:=&ppl;
+new 17: ppl:=71;
+GRADE A
+PERCENTAGE IS 76
+TOTAL IS 458
+PL/SQL procedure successfully completed.
+
+
+Program 6.5: Write a pl/sql program to find the sum of digits in a given number
+
+
+declare
+a number;
+d number:=0;
+sum1 number:=0;
+begin
+a:=&a;
+while a>0
+loop
+d:=mod(a,10);
+sum1:=sum1+d;
+a:=trunc(a/10);
+end loop;
+dbms_output.put_line('sum is'|| sum1);
+end;
+
+
+OUTPUT:
+
+SQL> @ SUMOFDIGITS.sql
+16 /
+
+
+Program 6.6: Write a pl/sql program to display the number in reverse order
+
+
+declare
+a number;
+rev number;
+d number;
+begin
+a:=&a;
+rev:=0;
+while a>0
+loop
+d:=mod(a,10);
+rev:=(rev*10)+d;
+a:=trunc(a/10);
+end loop;
+dbms_output.put_line('no is'|| rev);
+end;
+
+
+OUTPUT:
+
+SQL> @ REVERSE2.sql
+16 /
+Enter value for a: 536
+old 6: a:=&a;
+new 6: a:=536;
+no is635
+PL/SQL procedure successfully completed.
+
+
+Program 6.7: Write a pl/sql program to check whether the given number is prime or not.
+
+
+declare
+a number;
+c number:=0;
+i number;
+begin
+a:=&a;
+for i in 1..a
+loop
+if mod(a,i)=0 then
+c:=c+1;
+end if;
+end loop;
+if c=2 then
+dbms_output.put_line(a ||'is a prime number');
+else
+dbms_output.put_line(a ||'is not a prime number');
+end if;
+end;
+
+
+OUTPUT:
+
+SQL> @ PRIME.SQL
+19 /
+Enter value for a: 11
+old 6: a:=&a;
+new 6: a:=11;
+11is a prime number
+PL/SQL procedure successfully completed.
+
+
+Program 6.8: Write a pl/sql program to find the factorial of a given number
+
+
+declare
+n number;
+f number:=1;
+begin
+n:=&n;
+for i in 1..n
+loop
+f:=f*i;
+end loop;
+dbms_output.put_line('the factorial is'|| f);
+end;
+
+
+OUTPUT:
+
+SQL> @ FACTORIAL.sql
+12 /
+
+Enter value for n: 5
+old 5: n:=&n;
+
+
+Program 6.9: Write a pl/sql code block to calculate the area of a circle for a value of radius
+varying from 3 to 7.
+Store the radius and the corresponding values of calculated area in an empty table named
+areas ,consisting of two columns radius & area
+TABLE NAME:AREAS
+
+RADIUS AREA
+
+
+SQL> create table areas(radius number(10),area number(6,2));
+Table created.
+--PROGRAM
+declare
+pi constant number(4,2):=3.14;
+radius number(5):=3;
+area number(6,2);
+begin
+while radius<7 loop
+area:=pi*power(radius,2);
+insert into areas values(radius,area);
+radius:=radius+1;
+end loop;
+end;
+
+
+OUTPUT:
+
+SQL> @ AREAOFCIRCLE.SQL
+13 /
+PL/SQL procedure successfully completed.
+SQL> SELECT * FROM AREAS;
+
+RADIUS      AREA
+---------- ----------
+  3       28.26
+  4       50.24
+  5       78.5
+  6       113.04
+
+
+Program 6.10: Write a pl/sql code block that will accept an account number from the
+user,check if the users balance is less than minimum balance,only then deduct rs.100/- from
+the balance.this process is fired on the acct table.
+
+SQL> create table acct(name varchar2(10),cur_bal number(10),acctno number(6,2));
+SQL> insert into stud values('&sname',&rollno,&marks);
+SQL> select * from acct;
+
+ACCTNO      NAME       CUR_BAL
+---------- ---------- ----------
+  777      sirius     10000
+  765      john       1000
+  855      sam        500
+  353      peter      800
+
+
+--PROGRAM--
+
+declare
+mano number(5);
+mcb number(6,2);
+minibal constant number(7,2):=1000.00;
+fine number(6,2):=100.00;
+begin
+mano:=&mano;
+select cur_bal into mcb from acct where acctno=mano;
+if mcb<minibal then
+update acct set cur_bal=cur_bal-fine where acctno=mano;
+end if;
+end;
+
+
+OUTPUT:
+
+SQL> @ BANKACC.sql
+13 /
+Enter value for mano: 855
+old 7: mano:=&mano;
+new 7: mano:=855;
+PL/SQL procedure successfully completed.
+
+
+******************************************************<EXERCISE 7>**************************************************
+
+
+7.1>     create or replace procedure salary(deptid number) as
+         begin
+              update emp set sal=sal+1000 where sal>5000 AND deptno=deptid;
+         end;
+
+7.2>     create or replace procedure salary1(empid number) as
+         begin
+              update emp set sal=sal+sal*(0.1) where empno=empid;
+         end; 
+
+7.3>     create or replace procedure get_sal(dept number) as
+         begin
+                for s in (select * from emp where deptno = dept)
+                loop
+                   dbms_output.put_line(s.sal);
+                end loop;
+         end;
+
+7.4>     create or replace procedure get_nature(dept number) as
+         begin
+            for s in (select * from emp where deptno = dept)
+            loop
+                dbms_output.put_line(s.job);
+             end loop;
+         end;
+
+7.5>    create or replace procedure dep_name(deptid number)  as
+        begin
+           select dept.dname from dept,emp where emp.deptno=dept.deptno;
+        end;
+
+
+******************************************************<EXERCISE 8>**************************************************
+
+
+8a>  CREATE TRIGGER lcase_insert BEFORE INSERT ON my_table FOR EACH ROW
+      SET NEW.language = LOWER(NEW.language);
+
+8b>  insert into R(cnt) Select count(*) from employee where salary > 1000;
+
+8c>  CREATE  TRIGGER emp;
+     BEGIN
+       IF(to_char(sysdate,’dy’) IN (‘wed’,’WED’))
+       THEN RAISE_APPLICATION_ERROR(-20002,'record cannot be deleted');
+       END IF;
+     END;
+
+8d>  CREATE  TRIGGER emp;
+     BEGIN
+       IF(to_char(sysdate,’dy’) IN (‘ravi’,’RAVI’))
+       THEN RAISE_APPLICATION_ERROR(-20003,'record cannot be deleted for ravi');
+       END IF;
+     END;
+
+8e>  CREATE  TRIGGER emp;
+     for each row n
+     begin
+      BEGIN
+        if(n.emp=14)then 
+        THEN RAISE_APPLICATION_ERROR(-20003,'cannot insert into this emp');
+      END IF;
+     end;
